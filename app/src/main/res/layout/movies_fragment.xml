@@ -15,6 +15,7 @@
         android:id="@+id/movie_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:layoutAnimation="@anim/layout_movie_animation_show" />
 
 </LinearLayout>

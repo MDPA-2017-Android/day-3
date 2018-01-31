@@ -5,7 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.lasalle.mdpa.architecture.R;
@@ -32,6 +33,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
     private final Context context;
     private List<Movie> values;
+    private Integer lastPosition = -1;
 
     public MovieListAdapter(Context context, List<Movie> values) {
         this.context = context;
@@ -55,6 +57,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
         holder.title.setText(movie.getTitle());
         holder.extraInfo.setText(movie.getDirector() + " - " + Integer.toString(movie.getReleaseYear()));
+
+        int currentAnimation = R.anim.movie_item_right_anim;
+        if(position <= lastPosition)
+        {
+            currentAnimation = R.anim.movie_item_left_anim;
+        }
+
+        Animation animation = AnimationUtils.loadAnimation(context, currentAnimation);
+        holder.itemView.startAnimation(animation);
+        lastPosition = position;
     }
 
     @Override
@@ -64,6 +76,12 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
     public void setValues(List<Movie> values) {
         this.values = values;
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(ViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        holder.itemView.clearAnimation();
     }
 
 }
