@@ -6,22 +6,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.ViewParent;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 
 import com.lasalle.mdpa.architecture.R;
-import com.lasalle.mdpa.architecture.model.Movie;
-import com.lasalle.mdpa.architecture.view.adapter.MovieListAdapter;
 import com.lasalle.mdpa.architecture.view.adapter.TabAdapter;
 import com.lasalle.mdpa.architecture.view.model.LibraryViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_movie);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_tv_show);
     }
 
 }
