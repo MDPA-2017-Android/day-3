@@ -7,10 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.lasalle.mdpa.architecture.view.MoviesFragment;
 import com.lasalle.mdpa.architecture.view.TvShowsFragment;
 
-/**
- * Created by albert.denova on 31/01/2018.
- */
-
 public class TabAdapter extends FragmentPagerAdapter {
 
     public TabAdapter(FragmentManager fm) {

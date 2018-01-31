@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.ViewParent;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 
 import com.lasalle.mdpa.architecture.R;
 import com.lasalle.mdpa.architecture.model.Movie;
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         libraryViewModel.setResources(getResources());
 
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setAdapter(new TabAdapter(getSupportFragmentManager()));
