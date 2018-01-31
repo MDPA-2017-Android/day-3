@@ -19,39 +19,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LibraryViewModel libraryViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
 
+        LibraryViewModel libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
         libraryViewModel.setResources(getResources());
 
-        RecyclerView movieRecyclerView = (RecyclerView) findViewById(R.id.movie_list);
-        MovieListAdapter movieListAdapter = new MovieListAdapter(this, new ArrayList<Movie>());
-        movieRecyclerView.setAdapter(movieListAdapter);
-        movieRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        libraryViewModel.getMovieTitleList().observe(this, movieTitleList -> {
-            movieListAdapter.setValues(movieTitleList);
-            movieListAdapter.notifyDataSetChanged();
-        });
-
-        libraryViewModel.getTvShowTitleList().observe(this, tvShowList -> {
-            ListView tvShowListView = (ListView) findViewById(R.id.shows_list);
-            populateListView(tvShowListView, tvShowList);
-        });
-    }
-
-    private void populateListView(ListView listView, List<String> items) {
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                items );
-
-        listView.setAdapter(arrayAdapter);
+        setContentView(R.layout.activity_main);
     }
 
 }
