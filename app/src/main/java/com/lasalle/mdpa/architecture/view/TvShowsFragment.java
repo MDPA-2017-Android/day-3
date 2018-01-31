@@ -19,6 +19,11 @@ public class TvShowsFragment extends Fragment {
 
     private LibraryViewModel libraryViewModel;
 
+    public static TvShowsFragment newInstance() {
+        TvShowsFragment fragment = new TvShowsFragment();
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

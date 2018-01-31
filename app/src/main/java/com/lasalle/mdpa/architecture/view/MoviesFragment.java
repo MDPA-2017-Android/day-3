@@ -21,6 +21,11 @@ public class MoviesFragment extends Fragment {
 
     private LibraryViewModel libraryViewModel;
 
+    public static MoviesFragment newInstance() {
+        MoviesFragment fragment = new MoviesFragment();
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
